@@ -2,7 +2,6 @@ package handler
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"someApp/api"
@@ -11,7 +10,7 @@ import (
 func (h *Handler) CreatePokemon(w http.ResponseWriter, r *http.Request) {
 	var req api.RegistrationRequest
 
-	err := json.NewDecoder(r.Body).Decode(&req)
+	err := json.NewDecoder(r.Body).Decode(req)
 	if err != nil {
 		log.Printf("bind json err: %s \n", err.Error())
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -19,12 +18,11 @@ func (h *Handler) CreatePokemon(w http.ResponseWriter, r *http.Request) {
 	}
 	defer r.Body.Close()
 
-	fmt.Println(req)
 	err = h.pokemonService.CreatePokemon(&req.Pokemon)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusInternalServerError)
 }

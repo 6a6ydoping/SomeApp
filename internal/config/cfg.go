@@ -22,7 +22,7 @@ type ServerConfig struct {
 
 type DBConfig struct {
 	Host     string `yaml:"host"`
-	Port     string `yaml:"port"`
+	Port     string `yaml:"prt"`
 	DBName   string `yaml:"db_name"`
 	Username string `yaml:"username"`
 	Password string `yaml:"DB_PASSWORD"`

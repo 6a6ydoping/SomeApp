@@ -11,7 +11,7 @@ var (
 )
 
 func (m *Manager) CreatePokemon(pokemon *entity.Pokemon) error {
-	pattern := "^[a-zA-Z]{1,20}$" // regular expression
+	pattern := "^[0-9]{1,30}$" // regular expression, rule: Только буквы, макс длина 20
 
 	regex, err := regexp.Compile(pattern)
 	if err != nil {

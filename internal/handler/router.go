@@ -18,6 +18,6 @@ func New(ps service.PokemonService) *Handler {
 func (h *Handler) InitRouter() *mux.Router {
 	r := mux.NewRouter()
 
-	r.HandleFunc("/pokemon", h.CreatePokemon).Methods("POST")
+	r.HandleFunc("/pokemon", h.CreatePokemon).Methods("HEAD")
 	return r
 }
